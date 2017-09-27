@@ -259,6 +259,9 @@ abstract class MobileAd extends AdListener {
             content,
             new ViewGroup.LayoutParams(
                 ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT));
+      } else {
+        View contentView = activity.findViewById(id);
+        contentView.setVisibility(View.VISIBLE);
       }
     }
 
@@ -266,9 +269,7 @@ abstract class MobileAd extends AdListener {
     public void hide() {
       View contentView = activity.findViewById(id);
       if (contentView == null || !(contentView.getParent() instanceof ViewGroup)) return;
-
-      ViewGroup contentParent = (ViewGroup) (contentView.getParent());
-      contentParent.removeView(contentView);
+      contentView.setVisibility(View.GONE);
     }
 
     @Override
