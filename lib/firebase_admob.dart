@@ -139,6 +139,11 @@ abstract class MobileAd {
     _allAds[id] = null;
     return _channel.invokeMethod("disposeAd", <String, dynamic>{'id': id});
   }
+  
+   Future<bool> hide() {
+    assert(_allAds[id] != null);
+    return _channel.invokeMethod("hideAd", <String, dynamic>{'id': id});
+  }
 
   Future<bool> _doLoad(String loadMethod) {
     return _channel.invokeMethod(loadMethod, <String, dynamic>{
