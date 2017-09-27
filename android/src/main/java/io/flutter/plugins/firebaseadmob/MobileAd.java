@@ -31,6 +31,8 @@ abstract class MobileAd extends AdListener {
   final int id;
   Status status;
 
+  public abstract void hide();
+
   enum Status {
     CREATED,
     LOADING,
@@ -261,6 +263,15 @@ abstract class MobileAd extends AdListener {
     }
 
     @Override
+    public void hide() {
+      View contentView = activity.findViewById(id);
+      if (contentView == null || !(contentView.getParent() instanceof ViewGroup)) return;
+
+      ViewGroup contentParent = (ViewGroup) (contentView.getParent());
+      contentParent.removeView(contentView);
+    }
+
+    @Override
     void dispose() {
       super.dispose();
 
@@ -303,5 +314,9 @@ abstract class MobileAd extends AdListener {
     }
 
     // It is not possible to hide/remove/destroy an AdMob interstitial Ad.
+    @Override
+    public void hide() {
+
+    }
   }
 }

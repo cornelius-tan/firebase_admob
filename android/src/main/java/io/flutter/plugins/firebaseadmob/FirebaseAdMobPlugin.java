@@ -86,6 +86,17 @@ public class FirebaseAdMobPlugin implements MethodCallHandler {
     result.success(Boolean.TRUE);
   }
 
+  private void callHideAd(Integer id, MethodCall call, Result result) {
+    MobileAd ad = MobileAd.getAdForId(id);
+    if (ad == null) {
+      result.error("no_ad_for_id", "hide failed, no add exists for id=" + id, null);
+      return;
+    }
+
+    ad.hide();
+    result.success(Boolean.TRUE);
+  }
+
   @Override
   public void onMethodCall(MethodCall call, Result result) {
     if (call.method.equals("initialize")) {
@@ -115,8 +126,11 @@ public class FirebaseAdMobPlugin implements MethodCallHandler {
       case "disposeAd":
         callDisposeAd(id, call, result);
         break;
+      case "hideAd":
+        callHideAd(id, call, result);
       default:
         result.notImplemented();
     }
   }
+
 }

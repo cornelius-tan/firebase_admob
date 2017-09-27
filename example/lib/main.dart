@@ -6,12 +6,12 @@ import 'package:flutter/material.dart';
 import 'package:firebase_admob/firebase_admob.dart';
 
 // A placeholder AdMob App Id for testing.
-const String appId = 'ca-app-pub-3940256099942544~3347511713';
+const String appId = 'ca-app-pub-4382080942484562~6865756211';
 
 // Specify this to quiet Android log messages that say:
 //   Use AdRequest.Builder.addTestDevice("...") to get test ads on this device.
 //const String testDevice = null;
-const String testDevice = '33B6FA56617D7688A3A466295DED82BE';
+const String testDevice = 'CC5B170ECA711DA70857CF173F5DBECE';
 
 // See https://developers.google.com/admob/ios/test-ads
 const String bannerAdUnitId = 'ca-app-pub-3940256099942544/6300978111';
