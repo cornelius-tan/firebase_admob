@@ -128,6 +128,7 @@ public class FirebaseAdMobPlugin implements MethodCallHandler {
         break;
       case "hideAd":
         callHideAd(id, call, result);
+        break;
       default:
         result.notImplemented();
     }
